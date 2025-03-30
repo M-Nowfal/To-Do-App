@@ -1,0 +1,272 @@
+/* Profile */
+
+.profile {
+    position: relative;
+    z-index: 10;
+}
+
+.user-profile {
+    position: fixed;
+    right: 5px;
+    transform: translateY(10px);
+    color: black;
+    padding: 7px;
+    background-color: cyan;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    outline: 2px solid red;
+    box-shadow: 0px 0px 10px cyan;
+    cursor: pointer;
+}
+/* Auth Styles */
+
+.auth-container {
+    backdrop-filter: blur(20px);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.auth-title {
+    color: cyan;
+    text-shadow: 0px 0px 10px cyan;
+}
+
+.icons {
+    font-size: small;
+    position: absolute;
+    left: 10px;
+    color: cyan;
+    transform: translateY(30px);
+}
+
+.input-container {
+    position: relative;
+}
+
+.auth-input {
+    min-width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid white;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+
+.auth-input:focus {
+    box-shadow: 0px 0px 7px cyan;
+    border: 1px solid cyan;
+}
+
+.auth-label {
+    color: cyan;
+    position: absolute;
+    left: 28px;
+    transform: translateY(25px);
+}
+
+.auth-label-focused {
+    color: cyan;
+    position: absolute;
+    left: 14px;
+    transform: translateY(3px);
+    background-color: black;
+    padding: 0 3px;
+    font-size: small;
+}
+
+.eye {
+    position: absolute;
+    color: rgba(139, 186, 186, 0.818);
+    right: 12px;
+    transform: translateY(30px);
+    cursor: pointer;
+}
+
+.eye:hover {
+    color: cyan;
+}
+
+.auth-sub-btn {
+    background-color: cyan;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 10px;
+}
+
+.auth-sub-btn:hover {
+    box-shadow: 0px 0px 15px cyan;
+}
+/* To Do Filter Styles */
+
+.todo-filter {
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
+    box-shadow: 0px 0px 15px white;
+    border-radius: 0 0 10px 10px;
+}
+
+.filter {
+    box-shadow: 0px 0px 5px cyan;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* To Do Styles */
+
+.add-task-input {
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.9);
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 20px;
+}
+
+.todo-label {
+    color: cyan;
+    position: absolute;
+    left: 50px;
+    font-size: large;
+    transform: translateY(15px);
+    z-index: 1;
+}
+
+.todo-label-focused {
+    color: cyan;
+    position: absolute;
+    left: 10px;
+    transform: translateY(-25px);
+    text-shadow: 0px 0px 7px cyan;
+    font-size: larger;
+}
+
+.todo-input {
+    background: transparent;
+    color: aliceblue;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.todo-input:focus {
+    background: transparent;
+    color: aliceblue;
+    outline: none;
+    box-shadow: 0px 0px 25px cyan;
+}
+
+.pen-icon {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    font-size: 25px;
+    left: 15px;
+    transform: translateY(-40px);
+}
+
+.plus-icon {
+    color: aliceblue;
+    position: absolute;
+    right: 2px;
+    font-size: 63px;
+    transform: translateY(-60px);
+    cursor: pointer;
+}
+
+.plus-icon:hover {
+    color: cyan;
+}
+
+.preority {
+    position: absolute;
+    right: 58px;
+    width: 95px;
+    height: 56px;
+    border-radius: 10px;
+    transform: translateY(-57px);
+    background-color: aliceblue;
+    font-weight: bold;
+    font-size: large;
+    z-index: 1;
+}
+
+/* To Do Items Styles */
+
+.todo-item {
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.low {
+    box-shadow: 0px 0px 3px rgb(15, 160, 49);
+}
+
+.medium {
+    box-shadow: 0px 0px 3px rgb(63, 156, 255);
+}
+
+.high {
+    box-shadow: 0px 0px 3px rgb(255, 0, 0);
+}
+
+.todo-item-date {
+    backdrop-filter: blur(50px);
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.checked-item {
+    transform: scale(2.5);
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.trash-icon {
+    color: red;
+    font-size: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* User Profile */
+
+.user-auth-profile {
+    z-index: 6;
+    background-color: rgba(0, 0,0 ,0.7);
+    width: 100%;
+    margin: auto;
+}
+
+.inner-user-1 {
+    justify-content: center;
+}
+
+.inner-user-2{
+    background-color: cyan;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px cyan;
+}
+
+.inner-user-2 h4 {
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 5px;
+}
+
+.inner-user-2 h4:hover {
+    color: blue;
+}

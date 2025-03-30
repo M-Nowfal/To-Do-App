@@ -1,0 +1,145 @@
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TaskContext } from '../../App';
+import axios from 'axios';
+import { toast } from 'sonner';
+
+export const ForgotPassword = () => {
+
+    const { user, setUser } = useContext(TaskContext);
+    const [view, setView] = useState(false);
+    const [userDetails, setUserDetails] = useState({ name: "", phone: "", password: "", confirmPw: "", user });
+    const [focused, setFocused] = useState({ name: false, phone: false, password: false });
+    const navigate = useNavigate();
+
+    const handleForgotPassword = async () => {
+        if(userDetails.password !== userDetails.confirmPw){
+            toast.error("Password Mismatch");
+            return;
+        }
+        try {
+            const response = await axios.patch(`${import.meta.env.VITE_API_URL}/updatepwd`, { userDetails });
+            if(response.status == 200){
+                toast.success(response.data.message);
+                navigate("/");
+            }
+        } catch (err) {
+            if (err.response?.data?.message) {
+                toast.error(err.response.data.message);
+            } else {
+                console.log(err.response.data.error || err.message);
+                toast.error("Something went weong");
+            }
+        }
+    }
+
+    function handleUserDetails(e) {
+        setUserDetails(prev => ({
+            ...prev, [e.target.name]: e.target.value
+        }));
+    }
+
+    function handleFocusBlur(e) {
+        setFocused(prev => ({
+            ...prev, [e.target.name]: !prev[e.target.name]
+        }));
+    }
+
+    return (
+        <div className="d-flex align-items-center vh-100">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-6">
+                        <div className="auth-container">
+                            <h2 className="text-center auth-title">Recover Password</h2>
+                            <form onSubmit={(e) => { e.preventDefault(); handleForgotPassword(); }}>
+                                <div className="input-container">
+                                    <label className={`${focused.name ? "auth-label-focused" : !userDetails.name ? "auth-label" : "auth-label-focused"}`} htmlFor="user-name">User Name</label>
+                                    <input
+                                        className="auth-input"
+                                        type="text"
+                                        name="name"
+                                        id="user-name"
+                                        minLength={6}
+                                        maxLength={10}
+                                        value={userDetails.name}
+                                        onChange={handleUserDetails}
+                                        onFocus={handleFocusBlur}
+                                        onBlur={handleFocusBlur}
+                                        required
+                                    />
+                                    {!focused.name && !userDetails.name && <i className="fa-solid fa-user icons" />}
+                                </div>
+                                <div className="input-container">
+                                    <label className={`${focused.phone ? "auth-label-focused" : !userDetails.phone ? "auth-label" : "auth-label-focused"}`} htmlFor="phone-no">Phone</label>
+                                    <input
+                                        className="auth-input"
+                                        type="number"
+                                        name="phone"
+                                        id="phone-no"
+                                        min={999999999}
+                                        max={9999999999}
+                                        value={userDetails.phone}
+                                        onChange={handleUserDetails}
+                                        onFocus={handleFocusBlur}
+                                        onBlur={handleFocusBlur}
+                                        required
+                                    />
+                                    {!focused.phone && !userDetails.phone && <i className="fa-solid fa-phone icons" />}
+                                </div>
+                                <div className="input-container">
+                                    <label className={`${focused.password ? "auth-label-focused" : !userDetails.password ? "auth-label" : "auth-label-focused"}`} htmlFor="pw">New Password</label>
+                                    <input
+                                        className="auth-input"
+                                        type={`${view ? "text" : "password"}`}
+                                        name="password"
+                                        id="pw"
+                                        minLength={6}
+                                        maxLength={12}
+                                        value={userDetails.password}
+                                        onChange={handleUserDetails}
+                                        onFocus={handleFocusBlur}
+                                        onBlur={handleFocusBlur}
+                                        required
+                                    />
+                                    {!focused.password && !userDetails.password && <i className="fa-solid fa-key icons" />}
+                                    <i
+                                        className={`${view ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} eye`}
+                                        onClick={() => setView(prev => !prev)}
+                                    />
+                                </div>
+                                <div className="input-container">
+                                    <label className={`${focused.confirmPw ? "auth-label-focused" : !userDetails.confirmPw ? "auth-label" : "auth-label-focused"}`} htmlFor="cpw">Confirm Password</label>
+                                    <input
+                                        className="auth-input"
+                                        type="password"
+                                        name="confirmPw"
+                                        id="cpw"
+                                        minLength={6}
+                                        maxLength={12}
+                                        value={userDetails.confirmPw}
+                                        onChange={handleUserDetails}
+                                        onFocus={handleFocusBlur}
+                                        onBlur={handleFocusBlur}
+                                        required
+                                    />
+                                    {!focused.confirmPw && !userDetails.confirmPw && <i className="fa-solid fa-lock icons" />}
+                                </div>
+                                <div className="d-flex align-items-center mt-2">
+                                    <div className="m-auto">
+                                        <input
+                                            className="auth-sub-btn"
+                                            type="submit"
+                                            name="sub"
+                                            value="Submit"
+                                        />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

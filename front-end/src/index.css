@@ -1,0 +1,53 @@
+* {
+    transition: 0.25s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background: url("src/assets/Butterfly.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.link {
+    text-decoration: none;
+    color: cyan;
+}
+
+.link:hover {
+    text-decoration: underline;
+    text-shadow: 0px 0px 7px cyan;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    z-index: 25;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pnf {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.text-cyan {
+    color: cyan;
+    text-shadow: 0px 0px 10px cyan;
+}
