@@ -7,6 +7,10 @@ export const userSignIn = async (req, res, next) => {
         const { name, phone, password, confirmPw } = req.body.userDetails;
         if (password !== confirmPw)
             return res.status(409).json({ message: "Password doesn't match" });
+        const userExist = await taskModel.findOne({ name });
+        if (userExist) {
+            return res.status(403).json({ message: "User Name already exists" });
+        }
         const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10));
         const user = await taskModel.create({ name, phone, password: hashedPassword, tasks: [] });
         return res.status(201).json({ message: "Successfully Signed In", user: user._id });
@@ -144,7 +148,11 @@ export const updateTask = async (req, res, next) => {
 export const updatePassword = async (req, res, next) => {
     try {
         const { name, phone, password, confirmPw, user } = req.body.userDetails;
-        const userTask = await taskModel.findById(user);
+        let userTask;
+        if (user) 
+            userTask = await taskModel.findById(user);
+        else
+            userTask = await taskModel.findOne({ name });
         if(password !== confirmPw)
             return res.status(409).json({ message: "Password Missmatch" });
         if (userTask.name == name) {
