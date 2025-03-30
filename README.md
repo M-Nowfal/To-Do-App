@@ -1,1 +1,0 @@
-This is a To Do App using MERN stack
