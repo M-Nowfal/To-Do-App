@@ -5,7 +5,7 @@
 }
 
 body {
-    background: url("./Butterfly.png");
+    background: url("/Butterfly.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
