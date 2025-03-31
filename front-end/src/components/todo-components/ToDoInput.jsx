@@ -20,7 +20,7 @@ export const ToDoInput = () => {
             setTask(response.data.newTasks);
             setResponse(true);
         }
-        setToDo({ task: "", preority: "low" });
+        setToDo({ task: "", preority: toDo.preority });
     }
 
     return (
@@ -45,7 +45,7 @@ export const ToDoInput = () => {
                                 onChange={(e) => setToDo({ ...toDo, task: e.target.value })}
                                 required
                             />
-                            <select name="preority" className="preority" onClick={(e) => setToDo({ ...toDo, preority: e.target.value })}>
+                            <select name="preority" className="preority" onChange={(e) => setToDo({ ...toDo, preority: e.target.value })}>
                                 <option value="low">&nbsp;Low</option>
                                 <option value="medium">Medium</option>
                                 <option value="high">&nbsp;High</option>

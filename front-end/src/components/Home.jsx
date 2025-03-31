@@ -30,7 +30,7 @@ export const Home = () => {
                 }
             } catch (err) {
                 if (err.response && err.response.data && err.response.data.message)
-                    toast.err(err.response.data.message);
+                    toast.error(err.response.data.message);
                 console.log(err.response.data.error || err.message);
                 toast.error("Somthing went wrong");
             }
