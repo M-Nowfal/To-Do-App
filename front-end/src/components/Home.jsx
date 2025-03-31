@@ -41,7 +41,7 @@ export const Home = () => {
     return (
         <>
             <div className="profile" onClick={() => setOpen(!open)} >
-                <i className="fa-solid fa-user fs-2 user-profile" />
+                <i className="fa-solid fa-user fs-3 user-profile" />
             </div>
             {open && <UserProfile />}
             <div className="todo-filter px-2">
