@@ -276,3 +276,17 @@
 .inner-user-2 h4:hover {
     color: blue;
 }
+
+.x-mark-container {
+    position: relative;
+}
+
+.x-mark {
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    left: 145px;
+    transform: translateY(-85px);
+    text-shadow: 0px 0px 10px cyan;
+    cursor: pointer;
+}

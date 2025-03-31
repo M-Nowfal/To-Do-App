@@ -43,7 +43,7 @@ export const Home = () => {
             <div className="profile" onClick={() => setOpen(!open)} >
                 <i className="fa-solid fa-user fs-3 user-profile" />
             </div>
-            {open && <UserProfile />}
+            {open && <UserProfile setOpen={setOpen} />}
             <div className="todo-filter px-2">
                 <ToDoFilter />
             </div>
