@@ -149,7 +149,11 @@ export const updateTask = async (req, res, next) => {
 export const updatePassword = async (req, res, next) => {
     try {
         const { name, phone, password, confirmPw, user } = req.body.userDetails;
-        const userTask = await taskModel.findById(user);
+        let userTask;
+        if(user)
+            userTask = await taskModel.findById(user);
+        else
+            userTask = await taskModel.findOne({ name });
         if(password !== confirmPw)
             return res.status(409).json({ message: "Password Missmatch" });
         if (userTask.name == name) {
